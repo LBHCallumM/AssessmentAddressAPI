@@ -5,6 +5,6 @@ namespace AssessmentAddressAPI.UseCases.Interfaces
 {
     public interface IGetAddressesByPostCodeUseCase
     {
-        public Task<IEnumerable<Address>> ExecuteAsync(GetPropertiesRequest request);
+        public Task<List<Address>> ExecuteAsync(GetAddressesRequest request);
     }
 }

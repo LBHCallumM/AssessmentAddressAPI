@@ -1,4 +1,8 @@
+using AssessmentAddressAPI.Gateways;
+using AssessmentAddressAPI.Gateways.Interfaces;
 using AssessmentAddressAPI.Infrastructure;
+using AssessmentAddressAPI.UseCases;
+using AssessmentAddressAPI.UseCases.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +15,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 ConfigureDbContext(builder);
+
+builder.Services.AddTransient<IGetAddressesByPostCodeUseCase, GetAddressesByPostCodeUseCase>();
+builder.Services.AddTransient<IAddressGateway, AddressGateway>();
 
 var app = builder.Build();
 

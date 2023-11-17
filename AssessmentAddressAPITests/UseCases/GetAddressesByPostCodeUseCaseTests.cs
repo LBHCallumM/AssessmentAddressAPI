@@ -36,7 +36,7 @@ namespace AssessmentAddressAPITests.UseCases
         public async Task ExecuteAsync_WhenCalled_ReturnsAddressesFromGateway()
         {
             // Arrange
-            var request = new GetPropertiesRequest
+            var request = new GetAddressesRequest
             {
                 PostCode = _fixture.Create<string>()
             };

@@ -3,6 +3,7 @@ using AssessmentAddressAPI.Domain;
 using AssessmentAddressAPI.Factories;
 using AssessmentAddressAPI.Gateways.Interfaces;
 using AssessmentAddressAPI.UseCases.Interfaces;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace AssessmentAddressAPI.UseCases
 {
@@ -15,7 +16,7 @@ namespace AssessmentAddressAPI.UseCases
             _gateway = gateway;
         }
 
-        public async Task<IEnumerable<Address>> ExecuteAsync(GetPropertiesRequest request)
+        public async Task<List<Address>> ExecuteAsync(GetAddressesRequest request)
         {
             var addresses = await _gateway.GetAddressesByPostCode(request.PostCode);
 
