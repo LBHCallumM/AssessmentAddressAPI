@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Transactions;
 
-namespace AssessmentAddressAPITests.Gateways
+namespace AssessmentAddressAPITests
 {
     public static class MockDbContext
     {

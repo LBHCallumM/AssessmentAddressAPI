@@ -6,6 +6,11 @@ namespace AssessmentAddressAPI.Factories
 {
     public static class DbToDomainFactory
     {
+        public static List<Address> ToDomain(this IEnumerable<HackneyAddress> db)
+        {
+            return db.Select(ToDomain).ToList();
+        }
+
         public static Address ToDomain(this HackneyAddress db)
         {
             return new Address
