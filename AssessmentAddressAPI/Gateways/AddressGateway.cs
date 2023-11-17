@@ -1,11 +1,20 @@
 ﻿using AssessmentAddressAPI.Gateways.Interfaces;
 using AssessmentAddressAPI.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+using System.Net.NetworkInformation;
 
 namespace AssessmentAddressAPI.Gateways
 {
     public class AddressGateway : IAddressGateway
     {
-        public IEnumerable<HackneyAddress> GetAddressesByPostCode(string postCode)
+        private readonly AddressDbContext _context;
+
+        public AddressGateway(AddressDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<IEnumerable<HackneyAddress>> GetAddressesByPostCode(string postCode)
         {
             throw new NotImplementedException();
         }

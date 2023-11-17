@@ -4,7 +4,7 @@ namespace AssessmentAddressAPI.Gateways.Interfaces
 {
     public interface IAddressGateway
     {
-        public IEnumerable<HackneyAddress> GetAddressesByPostCode(string postCode);
+        public Task<IEnumerable<HackneyAddress>> GetAddressesByPostCode(string postCode);
 
     }
 }
