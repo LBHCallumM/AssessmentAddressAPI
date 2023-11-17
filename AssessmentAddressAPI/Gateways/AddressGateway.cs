@@ -16,7 +16,9 @@ namespace AssessmentAddressAPI.Gateways
 
         public async Task<IEnumerable<HackneyAddress>> GetAddressesByPostCode(string postCode)
         {
-            throw new NotImplementedException();
+            return await _context.HackneyAddresses
+                .Where(x => x.Postcode == postCode)
+                .ToListAsync();
         }
     }
 }
