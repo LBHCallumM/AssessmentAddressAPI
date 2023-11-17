@@ -29,8 +29,8 @@ namespace AssessmentAddressAPITests.Validation
         [TestCase("wx 2iP")]
         [TestCase("u6 ug9")]
         [TestCase("b9 bwY")]
-        [TestCase("aw evI")]
-        [TestCase("gI fto")]
+        [TestCase("awevI")]
+        [TestCase("gIfto")]
         public void IsValidPostCode_WhenInvalid_ReturnsFalse(string postCode)
         {
             // Arrange
@@ -42,11 +42,11 @@ namespace AssessmentAddressAPITests.Validation
             result.Should().BeFalse();
         }
 
-        [TestCase("m8 8EZ")]
-        [TestCase("f3 8Tz")]
-        [TestCase("G6 5JT")]
-        [TestCase("V6 5Oh")]
-        [TestCase("T4 7Xh")]
+        [TestCase("N16PS")]
+        [TestCase("  m88EZ  ")]
+        [TestCase("f38Tz")]
+        [TestCase("G65JT")]
+        [TestCase("T47Xh")]
         public void IsValidPostCode_WhenValid_ReturnsTrue(string postCode)
         {
             // Arrange

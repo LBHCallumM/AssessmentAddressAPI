@@ -10,7 +10,7 @@ namespace AssessmentAddressAPI.Validation
         {
             if (string.IsNullOrEmpty(postCode)) return false;
 
-            return PostCodeRegex.IsMatch(postCode);
+            return PostCodeRegex.IsMatch(postCode.Trim());
         }
     }
 }
