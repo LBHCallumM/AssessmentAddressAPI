@@ -16,9 +16,16 @@ namespace AssessmentAddressAPI.Gateways
 
         public async Task<IEnumerable<HackneyAddress>> GetAddressesByPostCode(string postCode)
         {
+            var normalisedPostCode = NormalisePostCode(postCode);
+
             return await _context.HackneyAddresses
-                .Where(x => x.Postcode == postCode)
+                .Where(x => NormalisePostCode(x.Postcode) == normalisedPostCode)
                 .ToListAsync();
+        }
+
+        private static string NormalisePostCode(string postCode)
+        {
+            return postCode.Replace(" ", "").ToLower();
         }
     }
 }

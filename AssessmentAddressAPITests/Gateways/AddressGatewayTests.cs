@@ -75,5 +75,36 @@ namespace AssessmentAddressAPITests.Gateways
             result.First().Should().BeEquivalentTo(addresses.First());
         }
 
+        [TestCase("N16 6PS")]
+        [TestCase("N166PS")]
+        [TestCase("n16 6ps")]
+        [TestCase("n166ps")]
+        [TestCase("   N16 6PS   ")]
+        public async Task GetAddressesByPostCode_WhenFormatVariesFromPostCodeInDatabase_ReturnsMatchingAddresses(string postCodeFromRequest)
+        {
+            // Arrange
+            var postCode = "N16 6PS";
+            var numberOfAddresses = _random.Next(5, 10);
+
+            var addresses = _fixture
+                .Build<HackneyAddress>()
+                .CreateMany(numberOfAddresses);
+
+            // One address must match the postCode
+            addresses.First().Postcode = postCode;
+
+            // save mock data to db
+            MockDbContext.Instance.HackneyAddresses.AddRange(addresses);
+            await MockDbContext.Instance.SaveChangesAsync();
+
+            // Act
+            var result = await _classUnderTest.GetAddressesByPostCode(postCodeFromRequest);
+
+            // Assert
+            result.Should().NotBeNull();
+            result.Should().HaveCount(1);
+            result.First().Should().BeEquivalentTo(addresses.First());
+        }
+
     }
 }
