@@ -17,6 +17,8 @@ namespace AssessmentAddressAPI.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(typeof(GetAddressesResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(BadRequestObjectResult), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetAddresses([FromQuery] GetAddressesRequest request)
         {
             var addresses = await _getAddressesUseCase.ExecuteAsync(request);
