@@ -19,7 +19,8 @@ namespace AssessmentAddressAPI.Gateways
             var normalisedPostCode = NormalisePostCode(postCode);
 
             return await _context.HackneyAddresses
-                .Where(x => NormalisePostCode(x.Postcode) == normalisedPostCode)
+                // Using helper method doesnt translate to database
+                .Where(x => x.Postcode.Replace(" ", "").ToLower() == normalisedPostCode)
                 .ToListAsync();
         }
 
