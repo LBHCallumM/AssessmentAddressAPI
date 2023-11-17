@@ -18,14 +18,6 @@ namespace AssessmentAddressAPI.Infrastructure
 
         public virtual DbSet<HackneyAddress> HackneyAddresses { get; set; } = null!;
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseNpgsql("");
-            }
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<HackneyAddress>(entity =>
