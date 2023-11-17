@@ -4,6 +4,9 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+	  <OutputPath>bin\Debug\net6.0\</OutputPath>
+	  <BaseOutputPath>bin\</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>

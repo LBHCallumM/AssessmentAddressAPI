@@ -7,9 +7,8 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -21,7 +20,6 @@ builder.Services.AddTransient<IAddressGateway, AddressGateway>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -42,7 +40,7 @@ static void ConfigureDbContext(WebApplicationBuilder builder)
 
     if (string.IsNullOrEmpty(connectionString))
     {
-        throw new InvalidOperationException($"The required environment variable 'CONNECTION_STRING' is not set.");
+        //throw new InvalidOperationException($"The required environment variable 'CONNECTION_STRING' is not set.");
     }
 
     builder.Services.AddDbContext<AddressDbContext>(
@@ -50,3 +48,5 @@ static void ConfigureDbContext(WebApplicationBuilder builder)
             .UseNpgsql(connectionString)
     );
 }
+
+public partial class Program { }
