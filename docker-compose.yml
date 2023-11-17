@@ -1,6 +1,19 @@
 version: "3.2"
 
 services:
+
+  address-api:
+    image: address-api
+    build:
+      context: .
+      dockerfile: AssessmentAddressAPI/Dockerfile
+    ports:
+      - 3000:3000
+    environment:
+      - CONNECTION_STRING=Host=sample-database;Database=sampledb;Username=postgres;Password=mypassword
+    links:
+      - sample-database
+
   sample-database:
     environment:
       - POSTGRES_USER=postgres
