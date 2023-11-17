@@ -9,7 +9,7 @@ namespace AssessmentAddressAPI.Boundary.Validation
         {
             var postCode = value as string;
 
-            if (!PostCodeValidator.IsValidPostcode(postCode))
+            if (!PostCodeValidator.IsValidPostCode(postCode))
             {
                 return new ValidationResult("Invalid postcode.");
             }
